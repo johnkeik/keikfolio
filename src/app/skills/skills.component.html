@@ -1,0 +1,11 @@
+<div class="skills-section">
+  <span class="section-title">My Skills</span>
+  <div class="squares-container">
+    @for (skill of skills; track $index) {
+      <div class="square">
+        <img [src]="skill.imgSrc" [alt]="skill.title">
+        <span>{{skill.title}}</span>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,59 @@
+@import "../design/media-queries";
+
+:host {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+
+    @include tablet-min {
+        gap: 100px
+    }
+}
+
+.about-section {
+    padding: 0 16px;
+
+    @include mobile-min {
+        padding: 0 40px;
+    }
+
+    @include tablet-min {
+        padding: 0 80px;
+    }
+
+    @include laptop-min {
+        padding: 0 150px;
+    }
+
+    @include desktop-min {
+        padding: 0 250px;
+    }
+
+    .description-container {
+        display: flex;
+        gap: 16px;
+
+        .dash {
+            height: 2px;
+            width: 80px;
+            margin-top: 8px;
+            background-color: var(--accent);
+
+        }
+    }
+}
+
+.thanks-section {
+    font-size: 2rem;
+    padding-bottom: 2rem;
+    color: var(--accent);
+    text-align: center;
+
+    @include tablet-min {
+        font-size: 3rem;
+
+    }
+}

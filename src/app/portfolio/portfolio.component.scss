@@ -1,0 +1,28 @@
+.portfolio-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+
+    position: relative;
+    -webkit-perspective: 800;
+    perspective: 800;
+
+    .squares-container {
+        display: flex;
+        // grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        &.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        &.two {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+}

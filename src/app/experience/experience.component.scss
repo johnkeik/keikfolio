@@ -1,0 +1,131 @@
+@import "../../design/media-queries";
+
+:host {
+    width: 100%;
+}
+
+.experience-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--secondary-background);
+    padding: 60px 16px;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .section-title {
+        position: absolute;
+        left: 16px;
+        top: -28px;
+
+        @include mobile-min {
+            left: 40px;
+        }
+    
+        @include tablet-min {
+            left: 80px;
+        }
+    
+        @include laptop-min {
+            left: 150px;
+        }
+    
+        @include desktop-min {
+            left: 250px;
+        }
+    }
+
+    .tiles-container {
+        display: flex;
+        flex-direction: column;
+
+        .skills-title {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+
+            .company-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .circle {
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 100%;
+                    background-color: var(--accent);
+                }
+            }
+        }
+    }
+
+    .experience-tile {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+
+        .left-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+
+            .circle {
+                width: 22px;
+                aspect-ratio: 1/1;
+                border-radius: 100%;
+                background-color: var(--accent);
+                box-shadow: 0 0 10px 5px rgba(255, 204, 0, 0.8);
+            }
+
+            .line {
+                width: 2px;
+                height: 100%;
+                background-color: white;
+            }
+        }
+
+        .right-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+
+            .title {
+                font-size: 1.5rem;
+                line-height: 2rem;
+                margin-bottom: 8px;
+            }
+
+            .skill {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 4px;
+
+                &.nested {
+                    margin-left: 16px;
+                }
+
+                .dash {
+                    height: 2px;
+                    min-width: 10px;
+                    margin-top: 8px;
+                    background-color: var(--accent);
+
+                    &.nested {
+                        margin-top: 6px;
+                        height: 4px;
+                        min-width: 4px;
+                        border-radius: 100%;
+                    }
+                }
+
+                .text {
+                    color: var(--secondary-text);
+                }
+            }
+        }
+    }
+
+}

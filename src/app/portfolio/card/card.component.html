@@ -1,0 +1,19 @@
+<div class="card-cont">
+    <div class="card" [ngClass]="{flipped: isCardFlipped}" (click)="flipCard()">
+        <div class="card_front" [style]="{'background-image': 'url(' + imgUrl() + ')'}"></div>
+        <div class="card_back">
+            <span>
+                Viewing...
+            </span>
+        </div>
+    </div>
+</div>
+
+@if (showModal) {
+    <div class="modal-container">
+        <div class="overlay" (click)="closeModal()"></div>
+        <div class="content">
+
+        </div>
+    </div>
+}

@@ -1,0 +1,172 @@
+.burger {
+    height: 20px;
+    width: 30px;
+    position: relative;
+
+    .line {
+        height: 4px;
+        width: 30px;
+        background-color: var(--accent);
+        position: absolute;
+        border-radius: 8px;
+    }
+    .line-1 {
+        transition: all 1s ease-in-out;
+        top: 0;
+    }
+
+    .line-2 {
+        top: 8px;
+    }
+
+    .line-3 {
+        top: 16px;
+        transition: all 1s ease-in-out;
+    }
+
+    &.open {
+        .line-1 {
+            animation: line1-open 1s forwards;
+        }
+
+        .line-2 {
+            animation: line2-open 1s forwards;
+        }
+
+        .line-3 {
+            animation: line3-open 1s forwards;
+        }
+    }
+
+    &:not(.open) {
+        .line-1 {
+            animation: line1-close 1s forwards;
+        }
+
+        .line-2 {
+            animation: line2-close 1s forwards;
+        }
+
+        .line-3 {
+            animation: line3-close 1s forwards;
+        }
+    }
+}
+
+@keyframes line1-open {
+    0% {
+        top: -4px;
+        transform: none;
+    }
+
+    40% {
+        top: 9px;
+    }
+
+    60% {
+        top: 8px
+    }
+
+    70% {
+        top: 8px;
+    }
+
+    100% {
+        top: 8px;
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes line2-open {
+    0% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes line3-open {
+    0% {
+        top: 20px;
+        transform: none;
+    }
+
+    40% {
+        top: 7px;
+    }
+
+    60% {
+        top: 8px
+    }
+
+    70% {
+        top: 8px;
+    }
+
+    100% {
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes line1-close {
+    0% {
+        top: 8px;
+        transform: rotate(45deg);
+    }
+
+    30% {
+        top: 9px;
+        transform: none;
+    }
+
+    60% {
+        top: 0;
+    }
+
+    100% {
+        top: 0;
+        transform: none;
+    }
+}
+
+@keyframes line2-close {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes line3-close {
+    0% {
+        top: 8px;
+        transform: rotate(-45deg);
+    }
+
+    30% {
+        top: 7px;
+        transform: none;
+    }
+
+    60% {
+        top: 16px;
+    }
+
+    100% {
+        top: 16px;
+        transform: none;
+    }
+}

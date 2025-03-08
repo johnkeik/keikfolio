@@ -1,0 +1,88 @@
+<div class="experience-section">
+    <span class="section-title">Experience</span>
+    <div class="tiles-container">
+        <div class="skills-title">
+            <span style="font-size: 2rem;">Front-End Lead Enginner</span>
+            <div class="company-wrapper">
+                <span>2020 - Present</span>
+                <div class="circle"></div>
+                <span>Foodtec Solutions</span>
+            </div>
+        </div>
+
+        <div class="experience-tile">
+            <div class="left-container">
+                <div class="circle"></div>
+                <div class="line"></div>
+            </div>
+            <div class="right-container">
+                <span class="title">Angular Tech Lead</span>
+    
+                @for (skill of angularSkills; track $index) {
+                    <div class="skill">
+                        <div class="dash"></div>
+                        <span class="text">{{skill.skill}}</span>
+                    </div>
+                }
+    
+            </div>
+    
+        </div>
+    
+        <div class="experience-tile">
+            <div class="left-container">
+                <div class="circle"></div>
+                <div class="line"></div>
+            </div>
+            <div class="right-container">
+                <span class="title">React Native Tech Lead</span>
+    
+                @for (skill of reactSkills; track $index) {
+                    <div class="skill">
+                        <div class="dash"></div>
+                        <span class="text">{{skill.skill}}</span>
+                    </div>
+    
+                    @for (nestedSkill of skill.children; track $index) {
+                        <div class="skill nested">
+                            <div class="dash nested"></div>
+                            <span class="text">{{nestedSkill.skill}}</span>
+                        </div>
+                    }
+                }
+            </div>
+    
+        </div>
+    </div>
+    
+    <div class="tiles-container">
+        <div class="skills-title">
+            <span style="font-size: 2rem;">Freelance software engineer</span>
+            <div class="company-wrapper">
+                <span>2019 - Present</span>
+                <div class="circle"></div>
+                <span>Self employed</span>
+            </div>
+        </div>
+
+        <div class="experience-tile">
+            <div class="left-container">
+                <div class="circle"></div>
+                <div class="line"></div>
+            </div>
+            <div class="right-container">
+                <span class="title">Full Stack Engineer</span>
+    
+                @for (skill of freelanceSkills; track $index) {
+                    <div class="skill">
+                        <div class="dash"></div>
+                        <span class="text">{{skill.skill}}</span>
+                    </div>
+                }
+    
+            </div>
+    
+        </div>
+    </div>
+
+</div>

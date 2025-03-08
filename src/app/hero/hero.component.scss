@@ -1,0 +1,118 @@
+
+@import "../../design/media-queries";
+
+:host {
+    width: 100%;
+}
+.hero-section {
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+
+    .title {
+        font-size: 1.75rem;
+        display: block;
+
+        @include tablet-min {
+            font-size: 2rem;
+        }
+
+        .enlarged {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: bold;
+
+            @include tablet-min {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .desktop-wrapper {
+        width: 100%;
+        display: flex;
+
+
+    }
+
+    .name-container-wrapper {
+        display: flex;
+        justify-content: end;
+        align-items: start;
+        width: 60%;
+        flex-direction: column;
+        padding: 0 0 0 16px;
+
+        @include mobile-min {
+            padding: 0 0 0 40px;
+            
+        }
+        
+        @include tablet-min {
+            justify-content: center;
+            padding: 0 0 0 80px;
+        }
+
+        @include laptop-min {
+            padding: 0 0 0 150px;
+        }
+
+        @include desktop-min {
+            padding: 0 0 0 250px;
+        }
+
+    }
+
+    .name-container {
+        display: flex;
+        flex-direction: column;
+        color: var(--primary-text);
+
+        .contact-button {
+            padding: 8px 32px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            width: fit-content;
+            margin-top: 8px;
+            color: var(--accent);
+            font-size: 1rem;
+
+            @include tablet-min {
+                font-size: 1.5rem;
+                border-radius: 15px;
+
+            }
+        }
+
+        .about {
+            font-size: 1rem;
+
+            @include tablet-min {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .handsome {
+        width: 40%;
+        opacity: 0.5;
+        background: url('../../assets/handsome.png') no-repeat bottom center;
+        background-size: 100%; 
+        height: 200px;
+
+        @include mobile-min {
+            height: 250px;
+        }
+
+        @include tablet-min {
+            height: 350px;
+        }
+
+        @include laptop-min {
+            height: 500px;
+        }
+        @include desktop-min {
+            height: 600px;
+        }
+    }
+}
