@@ -1,10 +1,9 @@
 <div class="portfolio-section">
     <span class="section-title">Portfolio</span>
     <div class="squares-container">
-        @for (item of [].constructor(3); track $index) {
-            <app-card [imgUrl]="'../../../assets/portfolio/rehab_fighters.png'"/>
+        @for (card of cards; track $index) {
+            <app-card [card]="card"/>
         }
-        <app-card [imgUrl]="'../../../assets/portfolio/dbscan.png'"/>
 
     </div>
 </div>

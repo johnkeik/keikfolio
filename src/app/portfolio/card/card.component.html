@@ -1,19 +1,41 @@
 <div class="card-cont">
     <div class="card" [ngClass]="{flipped: isCardFlipped}" (click)="flipCard()">
-        <div class="card_front" [style]="{'background-image': 'url(' + imgUrl() + ')'}"></div>
-        <div class="card_back">
-            <span>
-                Viewing...
-            </span>
-        </div>
+        <button class="card_front" [style]="{'background-image': 'url(' + card().imgSrc + ')'}"></button>
+        <div class="card_back"></div>
     </div>
 </div>
 
 @if (showModal) {
     <div class="modal-container">
         <div class="overlay" (click)="closeModal()"></div>
+        <div class="header" >
+            <div class="title-wrapper">
+                <span class="title">{{card().name}}</span>
+                @if (card().liveLink) {
+                    <button class="button-link">{{card().liveLink}}</button>
+                }
+                @if (card().githubLink) {
+                    <button class="button-link">
+                        <div class="github-icon">
+                            <cwo-icon [name]="iconNameType.github" class="icon"/>
+                        </div>
+                        {{card().githubLink}}
+                    </button>
+                }
+            </div>
+            <div class="empty-space" (click)="closeModal()"></div>
+            <div class="close-wrapper">
+                <button class="close" (click)="closeModal()">X</button>
+            </div>
+        </div>
         <div class="content">
-
+            @if (card().liveLink) {
+                <iframe [src]="card().liveLink! | safeUrl"></iframe>
+            } @else {
+                <div class="information-content">
+                    <span class="description">{{card().description}}</span>
+                </div>
+            }
         </div>
     </div>
 }

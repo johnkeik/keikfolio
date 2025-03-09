@@ -50,7 +50,7 @@ a {
     background-color: var(--primary-background);
     border-radius: 15px;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     gap: 8px;
     color: var(--accent);
@@ -78,5 +78,25 @@ a {
         width: 32px;
         min-width: 32px;
         aspect-ratio: 1/1;
+    }
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    .dash {
+        min-width: 24px;
+        height: 2px;
+        background-color: var(--accent);
+    }
+
+    a {
+        border-radius: 100%;
+        height: 38px;
+        width: 38px;
+        padding: 8px;
     }
 }

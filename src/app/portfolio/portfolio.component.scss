@@ -1,17 +1,21 @@
+:host {
+    width: 100%;
+}
+
 .portfolio-section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 16px;
-
+    width: 100%;
     position: relative;
     -webkit-perspective: 800;
     perspective: 800;
 
     .squares-container {
         display: flex;
-        // grid-template-columns: repeat(4, 1fr);
+        width: 100%;
         gap: 16px;
         flex-wrap: wrap;
         justify-content: center;

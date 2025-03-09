@@ -45,6 +45,7 @@ export class HeaderComponent {
     this.searchValue.emit(value)
   }
   setActive(section: ActivePage){
+    this.toggleMenu();
     this.goToSection.emit(section)
   }
   toggleMenu() {
