@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 export interface Skill {
   skill: string;
   children?: Skill[];
@@ -12,7 +15,7 @@ export interface Skill {
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
-export class ExperienceComponent {
+export class ExperienceComponent implements AfterViewInit {
   angularSkills: Skill[] = [
     {
       skill:
@@ -83,4 +86,192 @@ export class ExperienceComponent {
       skill: 'Servers development using Node JS',
     },
   ];
+
+  ngAfterViewInit(): void {
+    gsap.from('.experience-section-title', {
+      x: -800,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.experience-section-title',
+        start: 'top 95%',
+        end: 'top 90%',
+        scrub: 2,
+      },
+    });
+
+    this.initAngularSectionAnimations();
+    this.initReactSectionAnimations();
+    this.initFreelanceSectionAnimations();
+
+
+   
+  }
+
+  initAngularSectionAnimations() {
+    gsap.from('.skills-title-angular', {
+      opacity: 0,
+      y: 20,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.skills-title-angular',
+        start: 'top 90%',
+        end: 'top 80%',
+        scrub: 2,
+      },
+    });
+
+    gsap.to('.experience-tile-angular .right-container .title', {
+      duration: 'Angular Tech Lead'.length * 0.1,
+      text: 'Angular Tech Lead',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.experience-tile-angular',
+        start: 'top 90%',
+        end: 'top 0%',
+        toggleActions: 'play reverse play reverse', // Reverse the animation when scrolling up
+      },
+    });
+
+    gsap.from('.experience-tile-angular .left-container .circle', {
+      scale: 0,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.experience-tile-angular',
+        start: 'top 90%',
+        end: 'top 85%',
+        scrub: 2,
+      },
+    });
+
+    gsap.from('.experience-tile-angular .left-container .line', {
+      height: '0%',
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.experience-tile-angular',
+        start: 'top 80%',
+        end: 'top 70%',
+        scrub: 1
+      },
+    });
+
+    gsap.from('.experience-tile-angular .right-container .skill', {
+      opacity: 0,
+      y: 10,
+      ease: 'power1.out',
+      stagger: 0.5,
+      scrollTrigger: {
+        trigger: '.experience-tile-angular',
+        start: 'top 80%',
+        end: 'top 70%',
+        scrub: 2
+      },
+    });
+  }
+
+  initReactSectionAnimations() {
+    gsap.to('.experience-tile-react .right-container .title', {
+      duration: 'React Native Tech Lead'.length * 0.1,
+      text: 'React Native Tech Lead',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.experience-tile-react',
+        start: 'top 90%',
+        end: 'top 0%',
+        toggleActions: 'play reverse play reverse', // Reverse the animation when scrolling up
+      },
+    });
+
+    gsap.from('.experience-tile-react .left-container .circle', {
+      scale: 0,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.experience-tile-react',
+        start: 'top 90%',
+        end: 'top 85%',
+        scrub: 2,
+      },
+    });
+    gsap.from('.experience-tile-react .left-container .line', {
+      height: '0%',
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.experience-tile-react',
+        start: 'top 80%',
+        end: 'top 70%',
+        scrub: 1
+      },
+    });
+
+    gsap.from('.experience-tile-react .right-container .skill', {
+      opacity: 0,
+      y: 10,
+      ease: 'power1.out',
+      stagger: 0.5,
+      scrollTrigger: {
+        trigger: '.experience-tile-react',
+        start: 'top 80%',
+        end: 'top 70%',
+        scrub: 2
+      },
+    });
+  }
+
+  initFreelanceSectionAnimations() {
+    gsap.from('.skills-title-freelance', {
+      opacity: 0,
+      y: 20,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.skills-title-freelance',
+        start: 'top 90%',
+        end: 'top 80%',
+        scrub: 2,
+      },
+    });
+    gsap.to('.experience-tile-freelance .right-container .title', {
+      duration: 'Full Stack Engineer'.length * 0.1,
+      text: 'Full Stack Engineer',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.experience-tile-freelance',
+        start: 'top 90%',
+        end: 'top 0%',
+        toggleActions: 'play reverse play reverse', // Reverse the animation when scrolling up
+      },
+    });
+
+    gsap.from('.experience-tile-freelance .left-container .circle', {
+      scale: 0,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.experience-tile-freelance',
+        start: 'top 90%',
+        end: 'top 85%',
+        scrub: 2,
+      },
+    });
+    gsap.from('.experience-tile-freelance .left-container .line', {
+      height: '0%',
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.experience-tile-freelance',
+        start: 'top 80%',
+        end: 'top 70%',
+        scrub: 1
+      },
+    });
+
+    gsap.from('.experience-tile-freelance .right-container .skill', {
+      opacity: 0,
+      y: 10,
+      ease: 'power1.out',
+      stagger: 0.5,
+      scrollTrigger: {
+        trigger: '.experience-tile-freelance',
+        start: 'top 80%',
+        end: 'top 70%',
+        scrub: 2
+      },
+    });
+  }
 }

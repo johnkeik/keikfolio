@@ -2,8 +2,11 @@
     <span class="section-title">Portfolio</span>
     <div class="squares-container">
         @for (card of cards; track $index) {
-            <app-card [card]="card"/>
+            <app-card [card]="card" (openModal)="handleOpenModal($event)" [modalOpen]="!!projectForModal"/>
         }
 
     </div>
 </div>
+@if(projectForModal) {
+    <app-modal [project]="projectForModal" (close)="handleCloseModal()"/>
+}

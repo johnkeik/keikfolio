@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ContactComponent } from './contact/contact.component';
@@ -8,6 +8,8 @@ import { SkillsComponent } from './skills/skills.component';
 import { HeroComponent } from './hero/hero.component';
 import { ActivePage } from './models/active-page.enum';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import gsap from 'gsap';
+import { LayoutGsapAnimationsService } from './shared/services/layout-gsap-animations-service';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +26,7 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
+  animationsService = inject(LayoutGsapAnimationsService);
   title = 'ikcv';
   @ViewChild('aboutSection') aboutSection!: ElementRef;
   @ViewChild('portfolioSection') portfolioSection!: ElementRef;
@@ -36,19 +39,7 @@ export class AppComponent implements OnInit {
   private searchSubject = new Subject<string>();
   constructor(private elementRef: ElementRef){}
   ngOnInit(): void {
-    this.searchSubject
-      .pipe(
-        debounceTime(3000), // Debounce for 3 seconds
-        distinctUntilChanged()
-      )
-      .subscribe((searchValue) => {
-        this.searchQuery = searchValue;
-        this.searchPage();
-      });
-
-    setTimeout(() => {
-      this.searchSubject.next('react');
-    },5000)
+    this.animationsService.initGsapAnimations();
   }
   goToSection(section: ActivePage) {
     let contactElement;
@@ -88,40 +79,6 @@ export class AppComponent implements OnInit {
 
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
-  }
-
-
-  onSearch(searchValue: string): void {
-    this.searchSubject.next(searchValue);
-  }
-
-  // Function to search the DOM
-  searchPage() {
-    this.searchResults = this.searchDOM(this.searchQuery);
-    console.log(this.searchResults);
-  }
-
-
-  searchDOM(query: string): string[] {
-    const results: Set<string> = new Set(); // Use Set to remove duplicates
-    const elements = this.elementRef.nativeElement.querySelectorAll('*');
-
-    elements.forEach((element: { textContent: string; }) => {
-      if (element.textContent) {
-        const text = element.textContent.toLowerCase();
-        const queryIndex = text.indexOf(query.toLowerCase());
-
-        if (queryIndex !== -1) {
-          const start = Math.max(0, queryIndex - 10);
-          const end = Math.min(text.length, queryIndex + query.length + 10);
-
-          const result = text.substring(start, end);
-          results.add(result); // Add to Set
-        }
-      }
-    });
-
-    return Array.from(results); // Convert Set back to array
   }
 
   scrollToElement(result: string): void {

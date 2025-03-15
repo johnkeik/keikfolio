@@ -78,41 +78,6 @@ button:active {
                 display: none;
             }
         }
-
-        .search-wrapper {
-            display: none;
-            position: relative;
-            color: #939496;
-            height: fit-content;
-
-            @include tablet-min {
-                display: block;
-            }
-
-            .search-bar {
-                width: 200px;
-                height: 2.5rem;
-                border-radius: 8px;
-                background-color: var(--secondary-background);
-                border: none;
-                padding: 8px 45px 8px 16px;
-                color: var(--primary-text);
-                position: relative;
-
-                &:focus-visible {
-                    outline: 2px solid var(--accent);
-                    outline-offset: 4px;
-                }
-            }
-
-            svg {
-                position: absolute;
-                right: 5px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-        }
-
     }
 
 

@@ -45,11 +45,11 @@ export class HeaderComponent {
     this.searchValue.emit(value)
   }
   setActive(section: ActivePage){
-    this.toggleMenu();
+    this.toggleMenu(true);
     this.goToSection.emit(section)
   }
-  toggleMenu() {
-    this.visibleMenu = !this.visibleMenu;
+  toggleMenu(close?: boolean) {
+    this.visibleMenu = close ? false : !this.visibleMenu;
     if (this.visibleMenu) {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';

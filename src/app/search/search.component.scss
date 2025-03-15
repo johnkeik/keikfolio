@@ -1,0 +1,82 @@
+@import "../../design/media-queries";
+
+.search-wrapper {
+    display: none;
+    position: relative;
+    color: #939496;
+    height: fit-content;
+
+    @include tablet-min {
+        display: block;
+    }
+
+    .search-bar {
+        width: 200px;
+        height: 2.5rem;
+        border-radius: 8px;
+        background-color: var(--secondary-background);
+        border: none;
+        padding: 8px 45px 8px 16px;
+        color: var(--primary-text);
+        position: relative;
+
+        &:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+    }
+
+    svg {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+
+.dropdown {
+    position: fixed;
+    z-index: 999;
+    top: 4.5rem;
+    max-width: 350px;
+    min-width: 200px;
+    right: 80px;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1rem;
+    color: var(--primary-background);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+    .result {
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        align-items: start;
+
+        &:hover {
+            outline: 2px solid var(--accent);
+            outline-offset: 5px;
+        }
+
+        .section {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--secondary-text);
+    
+        }
+    }
+
+    .separator {
+        height: 2px;
+        width: 100%;
+        background-color: var(--secondary-background);
+    }
+
+}
