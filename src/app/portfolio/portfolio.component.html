@@ -1,5 +1,5 @@
 <div class="portfolio-section">
-    <span class="section-title">Portfolio</span>
+    <span class="section-title portfolio-section-title">Portfolio</span>
     <div class="squares-container">
         @for (card of cards; track $index) {
             <app-card [card]="card" (openModal)="handleOpenModal($event)" [modalOpen]="!!projectForModal"/>

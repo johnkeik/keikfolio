@@ -18,6 +18,7 @@
     transition: all .8s;
     cursor: pointer;
     border-radius: 15px;
+    opacity: 0;
 
     &.flipped {
         transform: perspective(400px) rotateX(180deg);

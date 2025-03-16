@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, input, output } from '@angular/core';
+import { AfterViewInit, Component, effect, input, output } from '@angular/core';
 import { PortfolioProjectType } from '../portfolio.component';
 import { SafeUrlPipe } from '../../shared/pipes/safe-url';
 import { IconComponent } from "../../shared/pipes/icons/icon.component";

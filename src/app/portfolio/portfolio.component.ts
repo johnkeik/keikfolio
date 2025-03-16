@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { ModalComponent } from './modal/modal.component';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 export interface Bullet {
   name: string;
   description?: string;
@@ -28,7 +31,7 @@ export interface PortfolioProjectType {
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements AfterViewInit {
   cards: PortfolioProjectType[] = [
     {
       name: 'Rehab Fighters',
@@ -87,6 +90,31 @@ export class PortfolioComponent {
 
   projectForModal?: PortfolioProjectType;
 
+  ngAfterViewInit(): void {
+    gsap.from('.portfolio-section-title',{
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.portfolio-section',
+        start: 'top 90%',
+        end: 'top 70%',
+        scrub: 2
+      }
+    })
+    gsap.to('.card', {
+      opacity: 1,
+      ease: 'power1.out',
+      stagger: 0.5,
+      scrollTrigger: {
+        trigger: '.portfolio-section',
+        start: 'top 80%',
+        end: 'top 50%',
+        scrub: 2
+      },
+    });
+  }
   handleOpenModal(project: PortfolioProjectType) {
     this.projectForModal = project;
   }
