@@ -49,10 +49,16 @@ export class PortfolioComponent implements AfterViewInit {
     },
     {
       name: 'ikDV Website',
-      shortDescription: 'A client website for display of the brand / blog',
+      shortDescription: '',
       imgSrc: '../../../assets/portfolio/ikdv.png',
-      liveLink: 'https://whoopiewebapp.web.app/',
-      githubLink: '',
+      githubLink: 'https://github.com/johnkeik/ikDV',
+      modalData: {
+        description: "My personal freelancing agency website.",
+        featuredList:[{
+          title: "Coming soon...",
+          bullets: []
+        }]
+      }
     },
     {
       name: 'AutoDBSCAN',

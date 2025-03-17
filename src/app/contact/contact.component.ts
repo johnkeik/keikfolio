@@ -35,7 +35,6 @@ export class ContactComponent implements AfterViewInit {
         start: 'top 90%',
         end: 'top 75%',
         scrub: 1,
-        markers: true,
       },
     });
   }

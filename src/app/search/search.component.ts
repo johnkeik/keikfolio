@@ -114,7 +114,6 @@ export class SearchComponent {
     if (matchingWords.length > 0) {
       const sectionName = this.assignSectionName(arrayName);
       this.searchResults.push({ sectionName, words: matchingWords, focusField: arrayName });
-      console.log(this.searchResults);
     }
   }
 
@@ -137,7 +136,6 @@ export class SearchComponent {
       this.searchTerm = "";
       this.searchResults = [];
       el.scrollIntoView({ behavior: 'smooth' , block:'center'});
-      console.log('changin', this.manualScroll)
       el.style.borderRadius = '15px';
       el.style.outline = '2px solid var(--accent)';
       el.style.outlineOffset = '8px';
@@ -167,10 +165,7 @@ export class SearchComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    console.log('befre', this.manualScroll)
-
     if(!this.manualScroll){
-      console.log('after', this.manualScroll)
 
       this.searchTerm = "";
       this.searchResults = [];

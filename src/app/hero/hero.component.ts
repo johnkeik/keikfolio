@@ -27,7 +27,6 @@ export class HeroComponent implements AfterViewInit {
     if (textElement) {
       const text = textElement.textContent;
       textElement.textContent = '';
-      console.log(text);
       if(text){
         gsap.to('.name', {
           duration: text.length * 0.1,
