@@ -32,6 +32,7 @@ export class LayoutGsapAnimationsService {
       },
       '+=0.5'
     ); 
+
     masterTimeline.from(
       '.about-section-description',
       {
@@ -53,7 +54,7 @@ export class LayoutGsapAnimationsService {
     masterTimeline.from(
       '.skills-section-title',
       {
-        x: 200,
+        x: '100%',
         y: 50,
         opacity: 0,
         duration: 1,
@@ -68,6 +69,19 @@ export class LayoutGsapAnimationsService {
       },
       '+=1'
     );
+
+    masterTimeline.from('.thanks-text', {
+      y: 100,
+      opacity: 0,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.thanks-section',
+        start: `top 95%`,
+        end: 'top 90%',
+        scrub: 2,
+      },
+      }
+    )
   }
 
   getScrollAmount() {

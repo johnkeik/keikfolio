@@ -47,13 +47,24 @@
 }
 
 .thanks-section {
+    height: 4rem;
+    margin-bottom: 2rem;
+
+    @include tablet-min {
+        height: 5rem;
+
+    }
+}
+
+.thanks-text {
+    display: inline-block;
     font-size: 2rem;
-    padding-bottom: 2rem;
+    line-height: 2rem;
     color: var(--accent);
     text-align: center;
 
     @include tablet-min {
         font-size: 3rem;
-
+        line-height: 3rem;
     }
 }

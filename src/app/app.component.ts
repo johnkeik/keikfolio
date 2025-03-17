@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ContactComponent } from './contact/contact.component';
@@ -25,7 +25,7 @@ import { LayoutGsapAnimationsService } from './shared/services/layout-gsap-anima
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
   animationsService = inject(LayoutGsapAnimationsService);
   title = 'ikcv';
   @ViewChild('aboutSection') aboutSection!: ElementRef;
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
   searchResults: string[] = [];
   private searchSubject = new Subject<string>();
   constructor(private elementRef: ElementRef){}
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.animationsService.initGsapAnimations();
   }
   goToSection(section: ActivePage) {

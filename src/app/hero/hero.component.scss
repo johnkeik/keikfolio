@@ -59,6 +59,7 @@
 
         @include desktop-min {
             padding: 0 0 0 250px;
+            width: 50%;
         }
 
     }
@@ -112,6 +113,8 @@
             height: 500px;
         }
         @include desktop-min {
+            width: 50%;
+            margin: 0 250px 0 0;
             height: 600px;
         }
     }
