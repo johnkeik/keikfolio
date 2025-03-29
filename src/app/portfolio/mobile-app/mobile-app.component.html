@@ -1,0 +1,22 @@
+<div class="mobile-app-container" #mobileContainer>
+    <img #iphoneFrame src="../../assets/images/iphone-frame.png" class="iphone-frame" alt="Iphone Frame" (load)="updateFrameDimensions()">
+    @if(showIframe && iphoneFrameWidth && iphoneFrameHeight) {
+
+        <iframe [src]="'https://johnkeik.github.io/game_counter_web_preview/index.html' | safeUrl" class="iframe-inside-iphone" [style]="{'height': iphoneFrameHeight, 'width': iphoneFrameWidth}"></iframe>
+
+    }
+
+    <div class="close-preview" [ngClass]="{'visible': enabledMobileIframe}">
+        <button (click)="onClick()">Close</button>
+    </div>
+        <div class="enable-mobile-iframe" [ngClass]="{'active': enabledMobileIframe}">
+            <!-- <span class="text" [ngClass]="{'hidden': enabledMobileIframe}">Take a look at my flutter app</span>
+            <span class="text" [ngClass]="{'hidden': enabledMobileIframe}">Its fully interactive so feel free to eplore.</span>
+            <span class="text" [ngClass]="{'hidden': enabledMobileIframe}">Dont be judgy its still under construction</span> -->
+            <button class="explore-button" (click)="onClick()">{{enabledMobileIframe ? 'Continue scrolling' : 'Explore'}}</button>
+        </div>
+    
+</div>
+@if(enabledMobileIframe){
+    <div class="overlay"></div>
+}

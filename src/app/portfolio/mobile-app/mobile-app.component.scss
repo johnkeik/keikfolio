@@ -1,0 +1,125 @@
+@import "../../../design/media-queries";
+
+.mobile-app-container {
+    overflow: hidden;
+    position: relative;
+    width: 340px;
+    height: 600px;
+    border-radius: 48px;
+
+    @include mobile-min {
+        width: 400px;
+        height: 720px;
+        border-radius: 60px;
+    }
+
+    .iphone-frame {
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 4;
+        pointer-events: none;
+        width: 340px;
+        height: 600px;
+
+        @include mobile-min {
+            width: 400px;
+            height: 720px;
+        }
+    }
+
+    .iframe-inside-iphone {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius: 25px;
+        scrollbar-width: thin;
+        overscroll-behavior: contain;
+        width: 290px;
+        height: 560px;
+        z-index: 3;
+
+        @include mobile-min {
+            width: 341px;
+            height: 675px;
+        }
+    }
+
+    .enable-mobile-iframe {
+        position: absolute;
+        inset: 0;
+        background-color: rgb(0, 0, 0, 0.8);
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 3;
+        transition: all 0.3s ease-in-out;
+        opacity: 1;
+
+        &.active {
+            opacity: 0;
+            top: -45px;
+            bottom: 100%;
+            background-color: transparent;
+        }
+
+        .text {
+            display: block;
+            opacity: 1;
+            transition: all 0.6s ease-in-out;
+
+            &.hidden {
+                display: none;
+                opacity: 0;
+            }
+        }
+
+        .explore-button {
+            background-color: var(--accent);
+            color: var(--primary-background);
+            padding: 8px 16px;
+            font-weight: bold;
+            border-radius: 32px;
+        }
+
+    }
+
+    .close-preview {
+        position: absolute;
+        right: -23px;
+        top: 15px;
+        background-color: var(--accent);
+        width: 136px;
+        transform: rotate(35deg);
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        padding: 4px;
+        
+        &.visible {
+            opacity: 1;
+        }
+
+    }
+
+}
+
+.overlay {
+    z-index: 2;
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    opacity: 0.6;
+}
