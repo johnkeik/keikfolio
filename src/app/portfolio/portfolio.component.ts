@@ -1,8 +1,9 @@
-import { AfterContentChecked, AfterContentInit, AfterViewInit, Component } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { ModalComponent } from './modal/modal.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MobileAppComponent } from './mobile-app/mobile-app.component';
 
 gsap.registerPlugin(ScrollTrigger);
 export interface Bullet {
@@ -18,6 +19,7 @@ export interface PortfolioProjectType {
   shortDescription: string;
   imgSrc: string;
   liveLink?: string;
+  showInsideIphoneFrame?: boolean;
   githubLink: string;
   modalData?: {
     description?: string;
@@ -27,7 +29,7 @@ export interface PortfolioProjectType {
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [CardComponent, ModalComponent],
+  imports: [CardComponent, ModalComponent, MobileAppComponent],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',
 })
@@ -94,9 +96,12 @@ export class PortfolioComponent implements AfterViewInit {
     },
   ];
 
+
+
   projectForModal?: PortfolioProjectType;
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void {    
+    // Existing GSAP animations
     gsap.from('.portfolio-section-title',{
       opacity: 0,
       y: 100,
@@ -121,6 +126,7 @@ export class PortfolioComponent implements AfterViewInit {
       },
     });
   }
+
   handleOpenModal(project: PortfolioProjectType) {
     this.projectForModal = project;
   }

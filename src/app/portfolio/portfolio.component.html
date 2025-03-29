@@ -4,8 +4,8 @@
         @for (card of cards; track $index) {
             <app-card [card]="card" (openModal)="handleOpenModal($event)" [modalOpen]="!!projectForModal"/>
         }
-
     </div>
+    <app-mobile-app />
 </div>
 @if(projectForModal) {
     <app-modal [project]="projectForModal" (close)="handleCloseModal()"/>

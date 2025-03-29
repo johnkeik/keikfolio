@@ -1,6 +1,7 @@
 import {
   Component,
   HostListener,
+  inject,
   input,
   output,
   signal,
@@ -8,6 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { HamburgerComponent } from '../hamburger/hamburger.component';
 import { ActivePage } from '../models/active-page.enum';
+import { ScrollHandlerService } from '../shared/services/scroll-handler.service';
 
 @Component({
   selector: 'app-header',
@@ -17,10 +19,12 @@ import { ActivePage } from '../models/active-page.enum';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  scrollHandlerService = inject(ScrollHandlerService);
+
   activeSection = input.required<ActivePage>();
 
   activePageType = ActivePage;
-  isNavbarVisible = true;
+
   private previousScrollPosition = window.scrollY;
   visibleMenu = false;
   activeLang = 'en';
@@ -30,13 +34,19 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    console.log('manual scrolling before', this.scrollHandlerService.isNavBarVisible());
+    if(this.scrollHandlerService.manualScrolling()) {
+      console.log('manual scrolling', this.scrollHandlerService.isNavBarVisible());
+      this.scrollHandlerService.setIsNavBarVisible(false);
+      return;
+    }
     const currentScrollPosition = window.scrollY;
     if (currentScrollPosition > this.previousScrollPosition) {
       // Scrolling down
-      this.isNavbarVisible = false;
+      this.scrollHandlerService.setIsNavBarVisible(false);
     } else {
       // Scrolling up
-      this.isNavbarVisible = true;
+      this.scrollHandlerService.setIsNavBarVisible(true);
     }
     this.previousScrollPosition = currentScrollPosition;
   }

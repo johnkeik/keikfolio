@@ -1,4 +1,4 @@
-<div class="mobile-header" [ngClass]="{'hide': !isNavbarVisible, 'expanded': visibleMenu}">
+<div class="mobile-header" [ngClass]="{'hide': !scrollHandlerService.isNavBarVisible()}">
     <div class="upper-part">
         <div class="logo-wrapper">
             <img src="../../assets/images/logo.svg" class="logo" alt="">
