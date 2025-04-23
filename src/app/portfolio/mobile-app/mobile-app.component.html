@@ -13,7 +13,12 @@
             <!-- <span class="text" [ngClass]="{'hidden': enabledMobileIframe}">Take a look at my flutter app</span>
             <span class="text" [ngClass]="{'hidden': enabledMobileIframe}">Its fully interactive so feel free to eplore.</span>
             <span class="text" [ngClass]="{'hidden': enabledMobileIframe}">Dont be judgy its still under construction</span> -->
-            <button class="explore-button" (click)="onClick()">{{enabledMobileIframe ? 'Continue scrolling' : 'Explore'}}</button>
+            <button class="explore-button" (click)="onClick()">
+                <span class="btn-text" [class.fade-out]="enableButtonLoading">
+                    {{ enabledMobileIframe ? 'Continue scrolling' : 'Explore' }}
+                  </span>
+                  <span class="spinner" *ngIf="enableButtonLoading"></span>
+            </button>
         </div>
     
 </div>

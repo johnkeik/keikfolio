@@ -22,16 +22,44 @@ export class ScrollHandlerService {
     this._manualScrolling.set(value);
   }
 
+  scrollTop = 0;
+
+ disableScroll(): void {
+  this.scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${this.scrollTop}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+  document.body.style.paddingRight = `${scrollbarWidth}px`; // Prevent content shift
+}
+
+ enableScroll(): void {
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  document.body.style.paddingRight = '';
+  window.scrollTo(0, this.scrollTop);
+}
+
+
   actionswhenAllModalsClosed() {
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '0';
+    this.enableScroll();
+    // document.body.style.overflow = '';
+    // document.body.style.paddingRight = '0';
   }
 
   actionsWhenAtleastOneModalOpen() {
-    const scrollBarWidth = this.getScrollBarWidth();
-    document.body.style.overflow = 'hidden';
-    if(scrollBarWidth === 0) return;
-    document.body.style.paddingRight = `${scrollBarWidth}px`;
+    this.disableScroll();
+    // const scrollBarWidth = this.getScrollBarWidth();
+    // document.body.style.overflow = 'hidden';
+    // if(scrollBarWidth === 0) return;
+    // document.body.style.paddingRight = `${scrollBarWidth}px`;
+    
   }
 
 

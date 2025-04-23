@@ -23,6 +23,8 @@ export class MobileAppComponent {
   iphoneFrameWidth = 0;
   showIframe = false;
   enabledMobileIframe = false;
+  enableButtonLoading = false;
+
 
   @ViewChild('mobileContainer') mobileContainer?: ElementRef<HTMLDivElement>;
   @ViewChild('iphoneFrame') iphoneFrame?: ElementRef<HTMLImageElement>;
@@ -36,12 +38,13 @@ export class MobileAppComponent {
       console.log(this.iphoneFrameHeight);
     }
   }
-
   onClick() {
     if (this.enabledMobileIframe) {
       this.scrollHandlerService.actionswhenAllModalsClosed();
+      this.scrollHandlerService.setManualScrolling(false);
       this.enabledMobileIframe = false;
     } else {
+      this.enableButtonLoading = true;
       this.scrollHandlerService.setManualScrolling(true);
       this.scrollHandlerService.setIsNavBarVisible(false);
       this.mobileContainer?.nativeElement.scrollIntoView({
@@ -51,7 +54,7 @@ export class MobileAppComponent {
       setTimeout(() => {
         this.scrollHandlerService.actionsWhenAtleastOneModalOpen();
         this.enabledMobileIframe = true;
-        this.scrollHandlerService.setManualScrolling(false);
+        this.enableButtonLoading = false;
       },500);
     }
   }

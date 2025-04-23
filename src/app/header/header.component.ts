@@ -34,9 +34,7 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    console.log('manual scrolling before', this.scrollHandlerService.isNavBarVisible());
     if(this.scrollHandlerService.manualScrolling()) {
-      console.log('manual scrolling', this.scrollHandlerService.isNavBarVisible());
       this.scrollHandlerService.setIsNavBarVisible(false);
       return;
     }
@@ -58,8 +56,10 @@ export class HeaderComponent {
     this.toggleMenu(true);
     this.goToSection.emit(section)
   }
+
   toggleMenu(close?: boolean) {
     this.visibleMenu = close ? false : !this.visibleMenu;
+
     if (this.visibleMenu) {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
