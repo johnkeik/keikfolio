@@ -23,11 +23,7 @@
         </div>
         <div class="content" [ngClass]="{isIFrame: project().liveLink}">
             @if (project().liveLink) {
-                @if(project().showInsideIphoneFrame){
-                    <img #iphoneFrame src="../../../assets/images/iphone-frame.png" class="iphone-frame" alt="Iphone Frame">
-                } @else {
-                    <iframe [src]="project().liveLink! | safeUrl" style="scrollbar-width: thin;"></iframe>
-                }
+                <iframe [src]="project().liveLink! | safeUrl" class="full-width-iframe" style="scrollbar-width: thin;"></iframe>
             } @else {
                 <div class="information-content">
                     <div class="wrapper-test">

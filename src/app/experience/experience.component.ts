@@ -170,8 +170,8 @@ export class ExperienceComponent implements AfterViewInit {
 
   initReactSectionAnimations() {
     gsap.to('.experience-tile-react .right-container .title', {
-      duration: 'React Native Tech Lead'.length * 0.1,
-      text: 'React Native Tech Lead',
+      duration: 'React Native'.length * 0.1,
+      text: 'React Native',
       ease: 'none',
       scrollTrigger: {
         trigger: '.experience-tile-react',

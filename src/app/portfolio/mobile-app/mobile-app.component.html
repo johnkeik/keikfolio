@@ -1,5 +1,5 @@
 <div class="mobile-app-container" #mobileContainer>
-    <img #iphoneFrame src="../../assets/images/iphone-frame.png" class="iphone-frame" alt="Iphone Frame" (load)="updateFrameDimensions()">
+    <img #iphoneFrame src="../../assets/images/iphone-frame-no-notch.png" class="iphone-frame" alt="Iphone Frame" (load)="updateFrameDimensions()">
     @if(showIframe && iphoneFrameWidth && iphoneFrameHeight) {
 
         <iframe [src]="'https://johnkeik.github.io/game_counter_web_preview/index.html' | safeUrl" class="iframe-inside-iphone" [style]="{'height': iphoneFrameHeight, 'width': iphoneFrameWidth}"></iframe>

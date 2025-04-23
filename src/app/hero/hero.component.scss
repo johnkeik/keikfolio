@@ -99,6 +99,7 @@
         opacity: 0.5;
         background: url('../../assets/handsome.png') no-repeat bottom center;
         background-size: 100%; 
+        max-width: 700px;
         height: 200px;
 
         @include mobile-min {

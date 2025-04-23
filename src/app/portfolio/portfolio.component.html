@@ -5,7 +5,23 @@
             <app-card [card]="card" (openModal)="handleOpenModal($event)" [modalOpen]="!!projectForModal"/>
         }
     </div>
-    <app-mobile-app />
+    <div class="mobile-app-wrapper">
+        <div class="mobile-app-info">
+            <span class="title">Flutter mobile app</span>
+            <span class="description">As you can see on the <span class="right">right</span><span class="bottom">bottom</span> there is a flutter mobile app. You can freely interact with it and do all the staff here on the webiste without the need to download it. <span class="underline-text">Feel free to explore it!!!</span></span>
+            
+            <span class="description" style="margin-top: 16px; font-style: italic;">App is coming live soon...</span>
+            <div class="app-stores">
+                <button class="app-store-button">
+                    <img src="../../assets/images/store-images/app-store.png" alt="App Store">
+                </button>
+                <button class="app-store-button">
+                    <img src="../../assets/images/store-images/play-store.png" alt="Play Store">
+                </button>
+            </div>
+        </div>
+        <app-mobile-app />
+    </div>
 </div>
 @if(projectForModal) {
     <app-modal [project]="projectForModal" (close)="handleCloseModal()"/>
